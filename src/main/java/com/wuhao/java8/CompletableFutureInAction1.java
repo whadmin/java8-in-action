@@ -17,6 +17,8 @@ public class CompletableFutureInAction1 {
     public static void main(String[] args)
             throws ExecutionException, InterruptedException {
 
+
+
         //supplyAsync
         CompletableFuture<Double> completableFuture = new CompletableFuture<>();
         new Thread(() -> {
