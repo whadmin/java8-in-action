@@ -1,5 +1,7 @@
 package com.wuhao.java8.date;
 
+import org.junit.Test;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.*;
@@ -32,14 +34,6 @@ public class DateTest {
 //            }).start();
 //        }
 
-        testLocalDate();
-//        testLocalTime();
-//        combineLocalDateAndTime();
-//        testInstant();
-//        testDuration();
-//        testPeriod();
-//        testDateFormat();
-//        testDateParse();
     }
 
     private static void testLocalDate() {
@@ -70,7 +64,8 @@ public class DateTest {
         System.out.println(now);
     }
 
-    private static void testInstant() throws InterruptedException {
+    @Test
+    public  void testInstant() throws InterruptedException {
         Instant start = Instant.now();
         Thread.sleep(1000L);
         Instant end = Instant.now();
@@ -78,21 +73,24 @@ public class DateTest {
         System.out.println(duration.toMillis());
     }
 
-    private static void testDuration() {
+    @Test
+    public  void testDuration() {
         LocalTime time = LocalTime.now();
         LocalTime beforeTime = time.minusHours(1);
         Duration duration = Duration.between(time, beforeTime);
         System.out.println(duration.toHours());
     }
 
-    private static void testPeriod() {
+    @Test
+    public  void testPeriod() {
         Period period = Period.between(LocalDate.of(2014, 1, 10), LocalDate.of(2016, 1, 10));
         System.out.println(period.getMonths());
         System.out.println(period.getDays());
         System.out.println(period.getYears());
     }
 
-    private static void testDateFormat() {
+    @Test
+    public  void testDateFormat() {
         LocalDate localDate = LocalDate.now();
         String format1 = localDate.format(DateTimeFormatter.BASIC_ISO_DATE);
 //        String format2 = localDate.format(DateTimeFormatter.ISO_LOCAL_TIME);
@@ -104,7 +102,8 @@ public class DateTest {
         System.out.println(format);
     }
 
-    private static void testDateParse() {
+    @Test
+    public  void testDateParse() {
         String date1 = "20161113";
         LocalDate localDate = LocalDate.parse(date1, DateTimeFormatter.BASIC_ISO_DATE);
         System.out.println(localDate);
