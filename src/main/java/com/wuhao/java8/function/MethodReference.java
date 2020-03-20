@@ -55,6 +55,7 @@ public class MethodReference {
         System.out.println(s);
 
 
+
         BiFunction<String, Long, Apple> appleFuntion = Apple::new;
         Apple apple = appleFuntion.apply("red", 100L);
         System.out.println(apple);

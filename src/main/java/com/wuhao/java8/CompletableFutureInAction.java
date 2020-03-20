@@ -13,16 +13,7 @@ public class CompletableFutureInAction {
     private static final Random random = new Random(System.currentTimeMillis());
 
     public static void main(String[] args) throws ExecutionException, InterruptedException {
-        /*CompletableFuture<Double> future = new CompletableFuture<>();
-        new Thread(() -> {
-            try {
-                Thread.sleep(10000L);
-                future.complete(1000d);
-            } catch (InterruptedException e) {
-                future.completeExceptionally(e);
-            }
-
-        }).start();
+        /*
 
         System.out.println("..............");
         future.whenComplete((v, t) -> {

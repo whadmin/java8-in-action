@@ -30,6 +30,8 @@ public class CollectorsReductionAndSummary {
         System.out.println("testSummarizingLong");
         Optional.of(menu.stream().collect(Collectors.summarizingLong(Dish::getCalories)))
                 .ifPresent(System.out::println);
+
+
     }
 
     @Test

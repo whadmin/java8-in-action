@@ -1,10 +1,13 @@
-package com.wuhao.java8;
+package com.wuhao.java8.completableFuture;
+
+import org.junit.Test;
 
 import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.atomic.AtomicBoolean;
+
 
 /***************************************
  * @author:Alex Wang
@@ -13,25 +16,25 @@ import java.util.concurrent.atomic.AtomicBoolean;
  ***************************************/
 public class CompletableFutureInAction2 {
 
-    public static void main(String[] args)
-            throws InterruptedException {
+    @Test
+    public void testEasyUse1() throws InterruptedException {
         AtomicBoolean finished = new AtomicBoolean(false);
+        /** 设置执行异步人无的线程为非守护线程 **/
         ExecutorService executor = Executors.newFixedThreadPool(2, r -> {
             Thread t = new Thread(r);
+            // 设置为非守护线程
             t.setDaemon(false);
             return t;
         });
-
         CompletableFuture.supplyAsync(CompletableFutureInAction1::get, executor)
                 .whenComplete((v, t) -> {
                     Optional.of(v).ifPresent(System.out::println);
                     finished.set(true);
                 });
 
-        System.out.println("====i am no ---block----");
-/*
-        while (!finished.get()) {
-            Thread.sleep(1);
-        }*/
+        //如果未设置成非守护线程必须打开注释
+//        while (!finished.get()) {
+//            Thread.sleep(1);
+//        }
     }
 }
